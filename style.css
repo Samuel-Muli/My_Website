@@ -35,13 +35,15 @@ section{
     padding: 0 80px;
     margin: auto;
 }
-.about, .services, .skills, .teams, .contact, footer{
+.about, .services, .skills, .projects, .contact, .work, .education, footer{
     font-family: 'Poppins', sans-serif;
 }
 .about .about-content,
 .services .serv-content,
 .skills .skills-content,
-.contact .contact-content{
+.contact .contact-content,
+.work .work-content,
+.education .education-content{
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -92,7 +94,7 @@ section .title::after{
 }
 .navbar .max-width{
     display: flex;
-    align-items: center;
+    align-items: right;
     justify-content: space-between;
 }
 .navbar .logo a{
@@ -113,26 +115,110 @@ section .title::after{
 }
 .navbar .menu li a{
     display: block;
-    color: #fff;
-    font-size: 18px;
+    color: #000000;
+    font-size: 20px;
     font-weight: 500;
-    margin-left: 25px;
+    margin-right: 20px;
     transition: color 0.3s ease;
 }
 .navbar .menu li a:hover{
     color: crimson;
 }
+
 .navbar.sticky .menu li a:hover{
     color: #fff;
 }
 
 /* menu btn styling */
 .menu-btn{
-    color: #fff;
-    font-size: 23px;
+    color: #000000;
+    font-size: 28px;
     cursor: pointer;
-    display: none;
+    display: box;
 }
+
+/*my code to animate text*/
+
+
+/* Animation Keyframes */
+@keyframes pop-in {
+    0% {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    80% {
+        opacity: 1;
+        transform: scale(1.1);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes pop-hover {
+    0% {
+        transform: scale(1);
+    }
+    80% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Animated Text */
+.animated-text h1,
+.animated-text p {
+    opacity: 0;
+    animation: pop-in 0.8s ease-out forwards;
+}
+
+/* Delay for Popping Text */
+.animated-text h1 {
+    animation-delay: 0.2s;
+}
+
+.animated-text p {
+    animation-delay: 0.4s;
+}
+
+/* Hover Effect */
+.animated-text h1:hover,
+.animated-text p:hover {
+    animation: pop-hover 0.4s ease-out;
+}
+
+/* Font Size Adjustments */
+.animated-text {
+    font-size: 18px;
+}
+
+@media (min-width: 600px) {
+    .animated-text {
+        font-size: 18px;
+    }
+}
+
+@media (min-width: 900px) {
+    .animated-text {
+        font-size: 20px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .animated-text {
+        font-size: 22px;
+    }
+}
+
+
+
+/*end  */
+
+
+
 .scroll-up-btn{
     position: fixed;
     height: 45px;
@@ -210,7 +296,8 @@ section .title::after{
 }
 .home .home-content a:hover{
     color: crimson;
-    background: none;
+    background: black;
+    border: 2px solid black;
 }
 
 /* about section styling */
@@ -258,33 +345,35 @@ section .title::after{
 }
 
 /* services section styling */
-.services, .teams{
-    color:#fff;
-    background: #111;
+.services{
+    color:blue;
+    background: lightgoldenrodyellow;
 }
-.services .title::before,
-.teams .title::before{
+.services .title::before{
     background: #fff;
 }
 .services .title::after,
-.teams .title::after{
-    background: #111;
-    content: "what i provide";
+.projects .title::after{
+    background: lightgoldenrodyellow;
+    content: "What I Do";
 }
 .services .serv-content .card{
-    width: calc(33% - 20px);
-    background: #222;
-    text-align: center;
-    border-radius: 6px;
-    padding: 50px 25px;
+    width: calc(33% - 40px);
+    background: lightgreen;
+    text-align: justify center;
+    border-radius: 3px;
+    font-size: 15px;
+    padding: none;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.5s ease;
 }
 .services .serv-content .card:hover{
-    background: crimson;
+    background: #00ff4c;
+    color:#000000;
+    font-size: 18px;
 }
 .services .serv-content .card .box{
-    transition: all 0.3s ease;
+    transition: all 0.5s ease;
 }
 .services .serv-content .card:hover .box{
     transform: scale(1.05);
@@ -292,15 +381,18 @@ section .title::after{
 .services .serv-content .card i{
     font-size: 50px;
     color: crimson;
-    transition: color 0.3s ease;
+    transition: color 0.5s ease;
 }
 .services .serv-content .card:hover i{
     color: #fff;
 }
 .services .serv-content .card .text{
-    font-size: 25px;
+    font-size: 30px;
     font-weight: 500;
-    margin: 10px 0 7px 0;
+    font-style: normal;
+    font-family: 'Lucida Sans';
+    text-decoration: underline;
+    margin: none;
 }
 
 /* skills section styling */
@@ -362,27 +454,37 @@ section .title::after{
     top: 0;
     background: crimson;
 }
-.skills-content .right .html::before{
-    width: 90%;
+.skills-content .right .python::before{
+    width: 80%;
 }
-.skills-content .right .css::before{
+.skills-content .right .cpp::before{
     width: 60%;
 }
 .skills-content .right .js::before{
-    width: 80%;
+    width: 50%;
 }
-.skills-content .right .php::before{
+.skills-content .right .Matlab::before{
     width: 50%;
 }
 .skills-content .right .mysql::before{
+    width: 60%;
+}
+.skills-content .right .AutoCAD::before{
     width: 70%;
 }
 
-/* teams section styling */
-.teams .title::after{
-    content: "who with me";
+
+
+/* projects section styling */
+.projects{
+    color:#b3b3b3;
+    background: #376a9c;
 }
-.teams .carousel .card{
+projects .title::after{
+    background: lightgoldenrodyellow;
+    content: "What I have done";
+}
+.projects .carousel .card{
     background: #222;
     border-radius: 6px;
     padding: 25px 35px;
@@ -390,25 +492,25 @@ section .title::after{
     overflow: hidden;
     transition: all 0.3s ease;
 }
-.teams .carousel .card:hover{
+.projects .carousel .card:hover{
     background: crimson;
 }
-.teams .carousel .card .box{
+.projects .carousel .card .box{
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     transition: all 0.3s ease;
 }
-.teams .carousel .card:hover .box{
+.projects .carousel .card:hover .box{
     transform: scale(1.05);
 }
-.teams .carousel .card .text{
+.projects .carousel .card .text{
     font-size: 25px;
     font-weight: 500;
     margin: 10px 0 7px 0;
 }
-.teams .carousel .card img{
+.projects .carousel .card img{
     height: 150px;
     width: 150px;
     object-fit: cover;
@@ -416,7 +518,7 @@ section .title::after{
     border: 5px solid crimson;
     transition: all 0.3s ease;
 }
-.teams .carousel .card:hover img{
+.projects .carousel .card:hover img{
     border-color: #fff;
 }
 .owl-dots{
@@ -440,6 +542,76 @@ section .title::after{
 .owl-dot:hover{
     background: crimson!important;
 }
+
+/*Styling the education*/
+
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #f4f4f4; /* Overall background color */
+}
+
+section.education {
+    padding: 100px 0;
+    background-color: #376a9c; /* Background color for the section */
+}
+
+.education .max-width {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.education .title {
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 50px;
+}
+
+.carousel {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.card {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 15px;
+    width: 250px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease; /* Hover effect */
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    background-color: #ffeb3b; /* Highlight color on hover */
+}
+
+.card .box {
+    padding: 20px;
+    text-align: center;
+}
+
+.card .box img {
+    width: 80px;
+    height: auto;
+    margin-bottom: 15px;
+}
+
+.card .box .text {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.card .box p {
+    font-size: 16px;
+    color: #555;
+}
+
 
 /* contact section styling */
 .contact .title::after{

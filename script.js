@@ -1,3 +1,55 @@
+// Scroll-up button functionality
+const scrollUpBtn = document.querySelector('.scroll-up-btn');
+const menuBtn = document.querySelector('.menu-btn');
+const navbarMenu = document.querySelector('.navbar .menu');
+const menuLinks = document.querySelectorAll('.menu-btn');
+// Scroll to top functionality
+scrollUpBtn.addEventListener('click', () => {
+    window.scrollTo({top: 0, behavior: 'smooth'});
+});
+// Show/hide scroll-up button on scroll
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 200) {
+        scrollUpBtn.classList.add('show');
+    } else {
+        scrollUpBtn.classList.remove('show');
+    }
+});
+
+// Toggle navbar menu on menu button click
+menuBtn.addEventListener('click', () => {
+    navbarMenu.classList.toggle('active');
+});
+
+// Smooth scroll to sections
+menuLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetId = link.getAttribute('href').substring(1);
+        document.getElementById(targetId).scrollIntoView({
+            behavior: 'smooth'
+        });
+
+        // Close the menu if in mobile view
+        navbarMenu.classList.remove('active');
+    });
+});
+
+// Change active menu button on click
+menuLinks.forEach(link => {
+    link.addEventListener('click', () => {
+        menuLinks.forEach(btn => btn.classList.remove('active'));
+        link.classList.add('active');
+    });
+});
+
+
+
+
+
+
+
+
 $(document).ready(function(){
     $(window).scroll(function(){
         // sticky navbar on scroll script
@@ -15,38 +67,24 @@ $(document).ready(function(){
         }
     });
 
-    // slide-up script
-    $('.scroll-up-btn').click(function(){
-        $('html').animate({scrollTop: 0});
-        // removing smooth scroll on slide-up button click
-        $('html').css("scrollBehavior", "auto");
-    });
 
-    $('.navbar .menu li a').click(function(){
-        // applying again smooth scroll on menu items click
-        $('html').css("scrollBehavior", "smooth");
-    });
-
-    // toggle menu/navbar script
-    $('.menu-btn').click(function(){
-        $('.navbar .menu').toggleClass("active");
-        $('.menu-btn i').toggleClass("active");
-    });
 
     // typing text animation script
     var typed = new Typed(".typing", {
-        strings: ["Mechanical Engineer", "Data Analyst", "Computer Technician"],
+        strings: ["Mechanical Engineer.", "Data Analyst.", "Computer Technician."],
         typeSpeed: 100,
         backSpeed: 60,
         loop: true
     });
 
     var typed = new Typed(".typing-2", {
-        strings: ["Mechanical Engineer", "Data Analyst", "Computer Technician"],
+        strings: ["Mechanical Engineer.", "Data Analyst.", "Computer Technician."],
         typeSpeed: 100,
         backSpeed: 60,
         loop: true
     });
+
+    
 
     // owl carousel script
     $('.carousel').owlCarousel({
@@ -70,4 +108,27 @@ $(document).ready(function(){
             }
         }
     });
+
+    document.addEventListener('DOMContentLoaded', (event) => {
+        document.querySelectorAll('.animated-text h1, .animated-text p').forEach((element) => {
+            element.style.opacity = '1'; // Ensure elements are visible for the animation
+        });
+    });
+
+
+        //my fuction to animate text
+
+
+    document.addEventListener('DOMContentLoaded', (event) => {
+        const elements = document.querySelectorAll('.animated-text h1, .animated-text p');
+        elements.forEach((element) => {
+            element.style.opacity = '1'; // Ensure elements are visible for the animation
+            element.style.fontSize = '20px'; // Dynamically set font size if needed
+        });
+    });
+        
+        
+        
+        
+    
 });
