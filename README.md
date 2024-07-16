@@ -2,7 +2,7 @@
 
 Welcome to the personal website of **Samuel Muli**, a dedicated student of Mechanical Engineering at Machakos University. This website serves as a digital portfolio, showcasing my skills, projects, and professional journey.
 
-![Samuel Muli](images/profile-pic.png)
+![Samuel Muli](images/profile-1.jpeg)
 
 ## Table of Contents
 
