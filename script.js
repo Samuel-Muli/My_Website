@@ -1,35 +1,29 @@
-// Scroll-up button functionality
-const scrollUpBtn = document.querySelector('.scroll-up-btn');
-const menuBtn = document.querySelector('.menu-btn');
-const navbarMenu = document.querySelector('.navbar .menu');
-const menuLinks = document.querySelectorAll('.navbar .menu li a');
+document.addEventListener('DOMContentLoaded', () => {
+    const menuBtn = document.querySelector('.menu-btn');
+    const navbarMenu = document.querySelector('.navbar .menu');
+    const menuLinks = document.querySelectorAll('.navbar .menu li a');
 
-// Scroll to top with smooth animation
-scrollUpBtn.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-});
+    // Toggle mobile menu
+    menuBtn.addEventListener('click', () => {
+        navbarMenu.classList.toggle('active');
+        menuBtn.querySelector('i').classList.toggle('fa-times');
+    });
 
-// Show/hide scroll-up button on scroll
-window.addEventListener('scroll', () => {
-    const scrollPos = window.scrollY;
-    scrollPos > 200 ? scrollUpBtn.classList.add('show') : scrollUpBtn.classList.remove('show');
+    // Close menu on link click
+    menuLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            navbarMenu.classList.remove('active');
+            menuBtn.querySelector('i').classList.remove('fa-times');
+        });
+    });
 
-    // Sticky navbar on scroll
-    scrollPos > 20 ? document.querySelector('.navbar').classList.add('sticky') : document.querySelector('.navbar').classList.remove('sticky');
-});
-
-// Toggle navbar menu in mobile view
-menuBtn.addEventListener('click', () => {
-    navbarMenu.classList.toggle('active');
-});
-
-// Smooth scroll to sections and close menu in mobile view
-menuLinks.forEach(link => {
-    link.addEventListener('click', (e) => {
-        e.preventDefault();
-        const targetId = link.getAttribute('href').substring(1);
-        document.getElementById(targetId).scrollIntoView({ behavior: 'smooth' });
-        navbarMenu.classList.remove('active');
+    // Smooth scroll
+    menuLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const target = document.querySelector(link.getAttribute('href'));
+            target.scrollIntoView({ behavior: 'smooth' });
+        });
     });
 });
 
@@ -62,30 +56,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 //mchezo wa paka na panya
-document.addEventListener('DOMContentLoaded', () => {
-    const menuBtn = document.querySelector('.menu-btn');
-    const menu = document.querySelector('.menu');
-
-    // Toggle the active class on the menu and menu-btn on click
-    menuBtn.addEventListener('click', () => {
-        menu.classList.toggle('active');  // Show or hide the menu
-        menuBtn.classList.toggle('open'); // Change the button icon or state
-    });
-
-    // Close menu when any link inside the menu is clicked (good for mobile view)
-    document.querySelectorAll('.menu li a').forEach(link => {
-        link.addEventListener('click', () => {
-            menu.classList.remove('active'); // Close the menu
-            menuBtn.classList.remove('open'); // Reset the button
-        });
-    });
-});
 
 
 //mchezo wa paka na panya
 
 // Owl Carousel functionality
-$(document).ready(function(){
+$(document).ready(function () {
     $('.carousel').owlCarousel({
         margin: 20,
         loop: true,
